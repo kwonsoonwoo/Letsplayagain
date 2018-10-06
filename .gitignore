@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 # Projects Secrets
 /.secrets
 
 # Django Static files path
 /.static
 /.media
+=======
+>>>>>>> 819cd3a4c944c6fd55d2f650cb92c473761f40e4
 
 # Created by https://www.gitignore.io/api/git,linux,macos,python,pycharm+all,JupyterNotebook,django
 
@@ -65,7 +68,11 @@ media
 .LSOverride
 
 # Icon must end with two \r
+<<<<<<< HEAD
 Icon
+=======
+Icon
+>>>>>>> 819cd3a4c944c6fd55d2f650cb92c473761f40e4
 
 # Thumbnails
 ._*
