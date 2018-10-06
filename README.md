@@ -1,10 +1,12 @@
 # Let's Play Again Application
 
-<<<<<<< HEAD
 ## Introduce
 
 - Project name: Let's Play Again
-- 
+- Detail: 
+    - Choose place to go to cultural events, parks, libraries, toy libraries with your children
+    - Select a category
+    - Then, it shows the information of the events that fit the category
 
 ## Requirements
 
@@ -32,6 +34,5 @@
 - export DJANGO_SETTINGS_MODULE=config.settings.local
 ./manage.py runserver
 ```
-=======
-**장고 개인 프로젝트**
->>>>>>> 819cd3a4c944c6fd55d2f650cb92c473761f40e4
+
+
