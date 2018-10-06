@@ -20,10 +20,14 @@ secrets = json.load(open(os.path.join(SECRETS_DIR, 'base.json')))
 
 SECRET_KEY = secrets['SECRET_KEY']
 
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+# Auth
 AUTH_USER_MODEL = 'members.User'
 
 INSTALLED_APPS = [
     'members',
+    'toy_library',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,7 +52,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            TEMPLATES_DIR,
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
