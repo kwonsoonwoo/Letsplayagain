@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>전체 index 페이지</h1>
+<div>
+    <a href="#">문화행사 링크</a>
+</div>
+<div>
+    <a href="#">공원 링크</a>
+</div>
+<div>
+    <a href="#">도서관 링크</a>
+</div>
+<div>
+    <a href="{% url 'toy-library:index' %}">장난감 도서관 링크</a>
+</div>
+{% endblock %}
