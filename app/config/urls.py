@@ -21,5 +21,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('toy-library/', include('toy_library.urls')),
+    path('toylibrary/', include('toylibrary.urls')),
 ]

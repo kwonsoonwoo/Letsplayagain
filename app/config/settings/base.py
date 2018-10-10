@@ -27,7 +27,7 @@ AUTH_USER_MODEL = 'members.User'
 
 INSTALLED_APPS = [
     'members',
-    'toy_library',
+    'toylibrary',
 
     'django.contrib.admin',
     'django.contrib.auth',
