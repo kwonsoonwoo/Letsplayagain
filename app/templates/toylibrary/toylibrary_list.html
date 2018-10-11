@@ -1,1 +1,14 @@
-<h1>장난감 도서관 list 페이지</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+    <h3>장난감 도서관 리스트 목록</h3>
+    </div>
+    <div>
+    {% for toylibrary in toylibraries %}
+        <p>{{ toylibrary.gu|linebreaksbr }}</p>
+        <p>{{ toylibrary.name }}</p>
+    {% endfor %}
+    </div>
+
+{% endblock %}
