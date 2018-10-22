@@ -6,8 +6,8 @@
     </div>
     <div>
     {% for toylibrary in toylibraries %}
-        <p>{{ toylibrary.gu|linebreaksbr }}</p>
-        <p>{{ toylibrary.name }}</p>
+        <p>구 명칭: {{ toylibrary.gu }}</p>
+        <p>도서관명 : {{ toylibrary.name }}</p>
     {% endfor %}
     </div>
 
