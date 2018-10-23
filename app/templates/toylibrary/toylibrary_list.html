@@ -2,12 +2,16 @@
 
 {% block content %}
     <div>
-    <h3>장난감 도서관 리스트 목록</h3>
+    <h3>서울시 장난감 도서관 목록</h3>
     </div>
     <div>
     {% for toylibrary in toylibraries %}
-        <p>구 명칭: {{ toylibrary.gu }}</p>
-        <p>도서관명 : {{ toylibrary.name }}</p>
+        <div>
+            구 명칭: {{ toylibrary.gu }}
+        </div>
+        <div>
+            도서관명 : <a href="{% url 'toylibrary:toylibrary-detail' pk=toylibrary.pk %}">{{ toylibrary.name }}</a>
+        </div>
     {% endfor %}
     </div>
 

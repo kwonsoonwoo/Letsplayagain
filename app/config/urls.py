@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('toylibrary/', include('toylibrary.urls')),
+    path('kidscafe/', include('kidscafe.urls')),
 ]
