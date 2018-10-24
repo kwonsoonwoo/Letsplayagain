@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3>Kids cafe 목록</h3>
+</div>
+
+<div>
+    2018-04-25일 기준으로 운영중인 키즈카페
+</div>
+{% for kidscafe in kidscafes %}
+    <div>
+        <a href="{% url 'kidscafe:kidscafe-detail' pk=kidscafe.pk %}">{{ kidscafe.name }}</a>
+    </div>
+{% endfor %}
+{% endblock %}

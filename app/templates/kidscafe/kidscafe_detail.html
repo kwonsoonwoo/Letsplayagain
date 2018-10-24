@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <p>카페이름: {{ kidscafe.name }}</p>
+    <p>지번주소: {{ kidscafe.address }}</p>
+    <p>도로명 주소: {{ kidscafe.address_road }}</p>
+    <p>전화번호: {{ kidscafe.tell }}</p>
+    <p>경도: {{ kidscafe.longitude }}</p>
+    <p>위도: {{ kidscafe.latitude }}</p>
+</div>
+
+{% endblock %}

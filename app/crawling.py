@@ -6,6 +6,7 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')
 django.setup()
 from toylibrary.models import Toylibrary
+from kidscafe.models import Kidscafe
 
 
 # 장난감 도서관 json데이터 파싱
@@ -35,5 +36,23 @@ def toylibrary_parsing():
             )
 
 
+def kidscafe_parsing():
+    file_path = 'data/kidscafe.json'
+    kidscafe_json = open(file_path, 'rt').read()
+    kidscafe_data = json.loads(kidscafe_json)
+    for kidscafe_list in kidscafe_data['DATA']:
+        # if None not in kidscafe_list['tel']:
+        #     pass
+        Kidscafe.objects.create(
+            name=kidscafe_list['nm'],
+            address=kidscafe_list['addr_old'],
+            address_road=kidscafe_list['addr'],
+            tell=kidscafe_list['tel'],
+            longitude=kidscafe_list['xcode'],
+            latitude=kidscafe_list['ycode'],
+            check_date=kidscafe_list['check_date'],
+        )
+
+
 if __name__ == "__main__":
-    toylibrary_parsing()
+    kidscafe_parsing()
