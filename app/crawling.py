@@ -40,9 +40,10 @@ def kidscafe_parsing():
     file_path = 'data/kidscafe.json'
     kidscafe_json = open(file_path, 'rt').read()
     kidscafe_data = json.loads(kidscafe_json)
-    for kidscafe_list in kidscafe_data['DATA']:
-        # if None not in kidscafe_list['tel']:
-        #     pass
+    for kidscafe_list in kidscafe_data.get('DATA'):
+        # 만약 json 파일의 'tel' value가 null이면 스
+        if not kidscafe_list.get('tel'):
+            con킵tinue
         Kidscafe.objects.create(
             name=kidscafe_list['nm'],
             address=kidscafe_list['addr_old'],
