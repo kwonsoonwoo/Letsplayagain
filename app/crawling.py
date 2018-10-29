@@ -59,4 +59,5 @@ def kidscafe_parsing():
 
 
 if __name__ == "__main__":
+    toylibrary_parsing()
     kidscafe_parsing()
