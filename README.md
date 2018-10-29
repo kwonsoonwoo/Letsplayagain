@@ -4,7 +4,7 @@
 
 - Project name: Let's Play Again
 - Detail: 
-    - Choose place to go to cultural events, parks, libraries, toy libraries with your children
+    - Choose place to go to cultural events, parks, kidscafes, toy libraries with your children
     - Select a category
     - Then, it shows the information of the events that fit the category
 

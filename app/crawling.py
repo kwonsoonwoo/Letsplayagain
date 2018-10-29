@@ -25,7 +25,8 @@ def toylibrary_parsing():
         if '미운영' not in toylibraries['addr_rd']:
             pass
             # Toylibrary 객체 생성
-            Toylibrary.objects.create(
+            # update_or_create는 기존에 생성한 파일이 있을 경우 추가되는것만 업데이트한다
+            Toylibrary.objects.update_or_create(
                 name=toylibraries['lib_nm'],
                 gu=toylibraries['addr_gu'],
                 website=toylibraries['website'],
@@ -41,10 +42,12 @@ def kidscafe_parsing():
     kidscafe_json = open(file_path, 'rt').read()
     kidscafe_data = json.loads(kidscafe_json)
     for kidscafe_list in kidscafe_data.get('DATA'):
-        # 만약 json 파일의 'tel' value가 null이면 스
+        # 만약 json 파일의 'tel' value가 null이면 스킵
         if not kidscafe_list.get('tel'):
-            con킵tinue
-        Kidscafe.objects.create(
+            continue
+        # Kidscafe 객체 생성
+        # update_or_create는 기존에 생성한 파일이 있을 경우 추가되는것만 업데이트한다
+        Kidscafe.objects.update_or_create(
             name=kidscafe_list['nm'],
             address=kidscafe_list['addr_old'],
             address_road=kidscafe_list['addr'],
