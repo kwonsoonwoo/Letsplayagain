@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div>
+        <h3>서울시 문화행사(유아, 영아대상)목록</h3>
+    </div>
+    <div>
     {% for culture in cultures %}
         <div>
             지역구 : {{ culture.gu }}
@@ -9,4 +13,5 @@
             장소: <a href="{% url 'culture:culture-detail' pk=culture.pk %}">{{ culture.place }}</a>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}
