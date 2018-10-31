@@ -1,5 +1,10 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def culture_list(request):
-    return HttpResponse('문화행사 인덱스 페이지')
+    return render(request, 'culture/culture_list.html')
+
+
+def culture_detail(request, pk):
+    return render(request, 'culture/culture_detail.html')
