@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>문화행사 리스트 페이지</h2>
+    {% for culture in cultures %}
+        {% if '유아' in culture.USE_TRGT or '영아' in culture.USE_TRGT %}
+            <p>지역구: {{ culture.GCODE }}</p>
+            <p>장소: {{ culture.PLACE }}</p>
+            <p>시작일: {{ culture.STRTDATE }}</p>
+            <p>종료일: {{ culture.END_DATE }}</p>
+            <p>시간: {{ culture.TIME }}</p>
+            <p>홈페이지: {{ culture.ORG_LINK }}</p>
+            <p>이용대상: {{ culture.USE_TRGT }}</p>
+            <p>이용요금: {{ culture.USE_FEE }}</p>
+            <p>문의: {{ culture.INQUIRY }}</p>
+        {% endif %}
+    {% endfor %}
 {% endblock %}

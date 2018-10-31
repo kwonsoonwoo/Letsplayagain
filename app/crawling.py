@@ -2,11 +2,17 @@ import json
 import os
 
 import django
+import requests
+
+from config.settings.base import secrets
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')
 django.setup()
+
+# 모델들이 아래에 있어야 장고에서 불러올수 있음
 from toylibrary.models import Toylibrary
 from kidscafe.models import Kidscafe
+from culture.models import Culture
 
 
 # 장난감 도서관 json데이터 파싱
@@ -58,6 +64,31 @@ def kidscafe_parsing():
         )
 
 
+def culture_crawling():
+    client_key = secrets['CULTURE_API_CLIENT_KEY']
+    file_format = 'json'
+    service = 'SearchConcertDetailService'
+
+    url = f'http://openapi.seoul.go.kr:8088/{client_key}/{file_format}/{service}/1/474/'
+    response = requests.get(url)
+    data = response.json()
+
+    for culture_event in data['SearchConcertDetailService']['row']:
+        if '유아' in culture_event['USE_TRGT'] or '영아' in culture_event['USE_TRGT']:
+            Culture.objects.update_or_create(
+                gu=culture_event['GCODE'],
+                place=culture_event['PLACE'],
+                start_date=culture_event['STRTDATE'],
+                end_date=culture_event['END_DATE'],
+                time=culture_event['TIME'],
+                homepage=culture_event['ORG_LINK'],
+                target_user=culture_event['USE_TRGT'],
+                fee=culture_event['USE_FEE'],
+                inquiry=culture_event['INQUIRY']
+            )
+
+
 if __name__ == "__main__":
     toylibrary_parsing()
     kidscafe_parsing()
+    culture_crawling()
