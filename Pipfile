@@ -8,6 +8,9 @@ django = "*"
 ipython = "*"
 django-extensions = "*"
 requests = "*"
+"bs4" = "*"
+lxml = "*"
+notebook = "*"
 
 [dev-packages]
 awsebcli = "*"

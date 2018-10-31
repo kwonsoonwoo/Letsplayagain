@@ -26,9 +26,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 AUTH_USER_MODEL = 'members.User'
 
 INSTALLED_APPS = [
-    'members',
-    'toylibrary',
-    'kidscafe',
+    'members.apps.MembersConfig',
+    'toylibrary.apps.ToyLibraryConfig',
+    'kidscafe.apps.KidscafeConfig',
+    'culture.apps.CultureConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
