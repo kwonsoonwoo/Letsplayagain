@@ -5,4 +5,29 @@
     <p>website 바로가기: <a href="{{ toylibrary.website }}">{{ toylibrary.website }}</a></p>
     <p>지번주소: {{ toylibrary.address }}</p>
     <p>도로명주소: {{ toylibrary.address_road }}</p>
+    <div id="map" style="width:500px;height:400px;"></div>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=05e3564b64663f477940d2e5f3b87549"></script>
+    <script>
+        var container = document.getElementById('map'); // 지도를 표시할 div
+            option = {
+            center: new daum.maps.LatLng({{ toylibrary.latitude }}, {{ toylibrary.longitude }}),
+            level: 2 // 지도의 확대 레벨
+        };
+
+        var map = new daum.maps.Map(container, option);
+
+        // 마커가 표시될 위치
+        var markerPosition = new daum.maps.LatLng({{ toylibrary.latitude }}, {{ toylibrary.longitude }});
+
+        // 마커를 생성한다
+        var marker = new daum.maps.Marker({
+            position: markerPosition
+        });
+
+        // 마커가 지도 위에 표시되도록 설정
+        marker.setMap(map);
+
+
+    </script>
 {% endblock %}
