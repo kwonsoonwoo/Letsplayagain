@@ -1,6 +1,21 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+
+from crawling import park_crawling
+from .models import Park
 
 
-def index(request):
-    return HttpResponse('index 페이지')
+def park_list(request):
+    park_crawling()
+    parks = Park.objects.all()
+    context = {
+        'parks': parks,
+    }
+    return render(request, 'park/park_list.html', context)
 
+
+def park_detail(request, pk):
+    park = Park.objects.get(pk=pk)
+    context = {
+        'park': park,
+    }
+    return render(request, 'park/park_detail.html', context)

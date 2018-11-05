@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>공원 디테일 페이지</h3>
+<p>공원이름: {{ park.name }}</p>
+<p>공원개요: {{ park.overview|linebreaks }}</p>
+<p>참고사항: {{ park.use_note|linebreaks }}</p>
+<p>지역: {{ park.region }}</p>
+<p>주소: {{ park.address }}</p>
+<p>전화번호: {{ park.tell }}</p>
+<p>위도: {{ park.latitude }}</p>
+<p>경도: {{ park.longitude }}</p>
+<p>웹사이트 바로가기: {{ park.website }}</p>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>서울 공원 리스트</h3>
+    {% for park in parks %}
+        <p>공원 이름: {{ park.name }}</p>
+    {% endfor %}
+
+{% endblock %}

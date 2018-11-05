@@ -1,9 +1,11 @@
 from django.shortcuts import render
 
+from crawling import culture_crawling
 from .models import Culture
 
 
 def culture_list(request):
+    culture_crawling()
     cultures = Culture.objects.all()
     context = {
         'cultures': cultures,
