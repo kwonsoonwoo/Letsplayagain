@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'toylibrary.apps.ToyLibraryConfig',
     'kidscafe.apps.KidscafeConfig',
     'culture.apps.CultureConfig',
+    'park.apps.ParkConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',

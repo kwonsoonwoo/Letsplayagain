@@ -24,4 +24,5 @@ urlpatterns = [
     path('toylibrary/', include('toylibrary.urls')),
     path('kidscafe/', include('kidscafe.urls')),
     path('culture/', include('culture.urls')),
+    path('park/', include('park.urls')),
 ]
