@@ -4,6 +4,7 @@ from django.db import models
 class Toylibrary(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     gu = models.CharField(max_length=255, blank=True, null=True)
+    tell = models.CharField(max_length=255, blank=True, null=True)
     website = models.URLField(max_length=255, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
     address_road = models.CharField(max_length=255, blank=True, null=True)

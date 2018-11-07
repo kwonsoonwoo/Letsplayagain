@@ -36,6 +36,7 @@ def toylibrary_parsing():
             Toylibrary.objects.update_or_create(
                 name=toylibraries['lib_nm'],
                 gu=toylibraries['addr_gu'],
+                tell=toylibraries['tel'],
                 website=toylibraries['website'],
                 address=toylibraries['addr'],
                 address_road=toylibraries['addr_rd'],
