@@ -5,7 +5,6 @@ import django
 import requests
 
 from config.settings.base import secrets
-from park.models import Park
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')
 django.setup()
@@ -14,6 +13,7 @@ django.setup()
 from toylibrary.models import Toylibrary
 from kidscafe.models import Kidscafe
 from culture.models import Culture
+from park.models import Park
 
 
 # 장난감 도서관 json데이터 파싱
@@ -139,3 +139,5 @@ def park_crawling():
 if __name__ == "__main__":
     toylibrary_parsing()
     kidscafe_parsing()
+    culture_crawling()
+    park_crawling()

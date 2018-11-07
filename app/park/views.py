@@ -5,7 +5,6 @@ from .models import Park
 
 
 def park_list(request):
-    park_crawling()
     parks = Park.objects.all()
     context = {
         'parks': parks,

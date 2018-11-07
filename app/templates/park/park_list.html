@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>서울 공원 리스트</h3>
+<div>
+    <h3>서울 공원 리스트</h3>
+</div>
+<div>
     {% for park in parks %}
-        <p>공원 이름: {{ park.name }}</p>
+        <div>
+            {% if park.region %}
+                지역구: {{ park.region }}
+            {% else %}
+                지역구: 없음
+            {% endif %}
+        </div>
+        <div>
+            공원명: <a href="{% url 'park:park-detail' pk=park.pk %}">{{ park.name }}</a>
+        </div>
     {% endfor %}
-
+</div>
 {% endblock %}
