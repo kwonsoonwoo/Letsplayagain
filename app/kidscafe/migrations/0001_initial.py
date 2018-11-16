@@ -12,17 +12,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Toylibrary',
+            name='Kidscafe',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.TextField(blank=True, null=True)),
-                ('gu', models.TextField(blank=True, null=True)),
-                ('tell', models.TextField(blank=True, null=True)),
-                ('website', models.URLField(blank=True, max_length=255, null=True)),
                 ('address', models.TextField(blank=True, null=True)),
                 ('address_road', models.TextField(blank=True, null=True)),
-                ('latitude', models.TextField(blank=True, null=True)),
-                ('longitude', models.TextField(blank=True, null=True)),
+                ('tell', models.TextField(blank=True, null=True)),
+                ('longitude', models.FloatField()),
+                ('latitude', models.FloatField()),
+                ('check_date', models.TextField(blank=True, null=True)),
             ],
         ),
     ]
