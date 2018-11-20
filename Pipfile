@@ -12,6 +12,7 @@ requests = "*"
 lxml = "*"
 notebook = "*"
 "psycopg2-binary" = "*"
+pyproj = "*"
 
 [dev-packages]
 awsebcli = "*"

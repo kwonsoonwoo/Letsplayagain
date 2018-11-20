@@ -1,4 +1,4 @@
-from django.db import models
+from django.contrib.gis.db import models
 
 
 class Kidscafe(models.Model):
@@ -6,8 +6,8 @@ class Kidscafe(models.Model):
     address = models.TextField(blank=True, null=True)
     address_road = models.TextField(blank=True, null=True)
     tell = models.TextField(blank=True, null=True)
-    longitude = models.FloatField()
     latitude = models.FloatField()
+    longitude = models.FloatField()
     check_date = models.TextField(blank=True, null=True)
 
     def __str__(self):

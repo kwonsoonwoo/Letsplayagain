@@ -2,18 +2,25 @@ import json
 import os
 
 import django
-import requests
-
-from config.settings.base import secrets
+import pyproj
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.dev')
 django.setup()
+
+import requests
+
+from config.settings.base import secrets
 
 # 모델들이 아래에 있어야 장고에서 불러올수 있음
 from toylibrary.models import Toylibrary
 from kidscafe.models import Kidscafe
 from culture.models import Culture
 from park.models import Park
+
+# kidscafe xcode, ycode를 latitude, longitude로 변환하기 위한 pyproj 모듈 인자 설정
+# 한국의 경우 WGS84 경위도를 기준으로 EPSG:4326, EPSG:4166을 사용
+p = pyproj.Proj(init='epsg:5181')
+outProj = pyproj.Proj("+proj=longlat +ellps=GRS80 +no_defs")
 
 
 # 장난감 도서관 json데이터 파싱
@@ -58,6 +65,11 @@ def kidscafe_parsing():
         # 만약 json 파일의 'tel' value가 null이면 스킵
         if not kidscafe_list.get('tel'):
             continue
+        # 다른 app의 위치정보와는 달리 키즈카페는 xcode, ycode로 되어 있기 때문에 위도,경도 변환이 필요함
+        # pyproj 패키지의 transform 메서드를 사용하여 xcode와, ycode를 x와 y변수에 할당
+        # 통상적으로 Longitude(경도)=X, Latitude(위도)=Y 로 정의되어 있음
+        # 서울데이터광장의 경우에도 ycode=위도, xcode=경도라고 표기.
+        x, y = pyproj.transform(p, outProj, kidscafe_list['xcode'], kidscafe_list['ycode'])
         # Kidscafe 객체 생성
         # update_or_create는 기존에 생성한 파일이 있을 경우 추가되는것만 업데이트한다
         Kidscafe.objects.update_or_create(
@@ -65,8 +77,8 @@ def kidscafe_parsing():
             address=kidscafe_list['addr_old'],
             address_road=kidscafe_list['addr'],
             tell=kidscafe_list['tel'],
-            longitude=kidscafe_list['xcode'],
-            latitude=kidscafe_list['ycode'],
+            latitude=y,
+            longitude=x,
             check_date=kidscafe_list['check_date'],
         )
 
