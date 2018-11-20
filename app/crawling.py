@@ -18,9 +18,15 @@ from culture.models import Culture
 from park.models import Park
 
 # kidscafe xcode, ycode를 latitude, longitude로 변환하기 위한 pyproj 모듈 인자 설정
-# 한국의 경우 WGS84 경위도를 기준으로 EPSG:4326, EPSG:4166을 사용
+#   한국의 경우 GRS80 경위도 사용(보통은 WGS84 경위도 사용)
+#   EPSG:4019, EPSG:4737 혹은 "+proj=longlat +ellps=GRS80 +no_defs"
+#   후자의 경우 init변수를 추가하지 않아도 된다.
+# p는 입력 좌표의 좌표계
+#   중부원점(GRS80)-falseY:50000, 다음지도에서 사용중인 좌표계
+#   EPSG:5180 혹은 "+proj=tmerc +lat_0=38 +lon_0=125 +k=1 +x_0=200000 +y_0=500000 +ellps=GRS80 +units=m +no_defs"
 p = pyproj.Proj(init='epsg:5181')
-outProj = pyproj.Proj("+proj=longlat +ellps=GRS80 +no_defs")
+# outProj는 변환할 좌표계(GRS80)
+outProj = pyproj.Proj(init='epsg:4737')
 
 
 # 장난감 도서관 json데이터 파싱
