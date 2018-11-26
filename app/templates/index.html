@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>또래친구와 또 놀자!</h1>
-<div>
-    <a href="{% url 'culture:culture-list' %}">문화행사 링크</a>
-</div>
-<div>
-    <a href="{% url 'park:park-list' %}">공원 링크</a>
-</div>
-<div>
-    <a href="{% url 'kidscafe:kidscafe-list' %}">키즈카페</a>
-</div>
-<div>
-    <a href="{% url 'toylibrary:toylibrary-list' %}">장난감 도서관</a>
+<div class="container-fluid">
+    <h1>또래친구와 또 놀자!</h1>
+    <div>
+        <a class="btn btn-outline-primary" href="{% url 'culture:culture-list' %}" role="button">문화행사</a>
+    </div>
+    <div>
+        <a class="btn btn-outline-success" href="{% url 'park:park-list' %}" role="button">공원</a>
+    </div>
+    <div>
+        <a class="btn btn-outline-danger" href="{% url 'kidscafe:kidscafe-list' %}" role="button">키즈카페</a>
+    </div>
+    <div>
+        <a class="btn btn-outline-info" href="{% url 'toylibrary:toylibrary-list' %}" role="button">장난감 도서관</a>
+    </div>
 </div>
 {% endblock %}
 
