@@ -1,20 +1,215 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container-fluid">
-    <h1>또래친구와 또 놀자!</h1>
-    <div>
-        <a class="btn btn-outline-primary" href="{% url 'culture:culture-list' %}" role="button">문화행사</a>
-    </div>
-    <div>
-        <a class="btn btn-outline-success" href="{% url 'park:park-list' %}" role="button">공원</a>
-    </div>
-    <div>
-        <a class="btn btn-outline-danger" href="{% url 'kidscafe:kidscafe-list' %}" role="button">키즈카페</a>
-    </div>
-    <div>
-        <a class="btn btn-outline-info" href="{% url 'toylibrary:toylibrary-list' %}" role="button">장난감 도서관</a>
-    </div>
-</div>
-{% endblock %}
+<!--Main Navigation-->
+  <header>
 
+    <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="{% url 'index' %}">Let's Play Again</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto smooth-scroll">
+      <li class="nav-item">
+        <a class="nav-link" href="#intro">Home</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#category">Category</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+      </li>
+
+    </ul>
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+    <!--Mask-->
+    <div id="intro" class="view">
+
+      <div class="mask rgba-black-strong">
+
+        <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+
+          <div class="row d-flex justify-content-center text-center">
+
+            <div class="col-md-10">
+
+              <!--Heading-->
+              <h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Let's Play Again</h2>
+
+              <!--Divider-->
+              <hr class="hr-light">
+
+              <!--Description-->
+              <h4 class="white-text my-4">
+                <p>영ㆍ유아 자녀들의 놀이공간을</p>
+                <p>늘 고민하는 부모님들을 위한</p>
+                <p>장소 정보 제공 서비스입니다.</p>
+
+              </h4>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!--/.Mask-->
+
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="mt-5">
+      <div class="container">
+
+
+          <!--Section: Category-->
+          <section id="category" class="text-center">
+
+          <!-- Heading -->
+          <h2 class="mb-5 font-weight-bold">Category</h2>
+
+            <!--Grid row-->
+            <div class="d-flex justify-content-center">
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-12 mb-4">
+
+                <div class="view overlay z-depth-1-half">
+                    <img src="https://t1.daumcdn.net/cfile/tistory/2777833F5547123924" class="img-fluid">
+                    <a href="{% url 'culture:culture-list' %}">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <h4 class="my-4 font-weight-bold">문화행사</h4>
+                <p class="grey-text">영ㆍ유아를 대상으로 한<br>
+                    서울에 있는 문화행사에 대한 상세 정보</p>
+
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-6 mb-4">
+
+                <div class="view overlay z-depth-1-half">
+                  <img src="http://www.검찰미디어방송국.com/oldsite/upload/1486868199631.JPG" class="img-fluid">
+                  <a href="{% url 'toylibrary:toylibrary-list' %}">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+
+                <h4 class="my-4 font-weight-bold">장난감 도서관</h4>
+                <p class="grey-text">서울시 각 자치구에 위치한<br>
+                    장난감도서관의 위치 정보</p>
+
+              </div>
+              <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <!--Grid row-->
+            <div class="d-flex justify-content-center">
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-12 mb-4">
+
+                <div class="view overlay z-depth-1-half">
+                  <img src="http://www.ildongmom.com/data/blog/skmmm79/1530216326_1_1.jpg" class="img-fluid">
+                  <a href="{% url 'kidscafe:kidscafe-list' %}">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+
+                <h4 class="my-4 font-weight-bold">키즈카페</h4>
+                <p class="grey-text">서울시에서 제공하는 키즈카페(어린이)현황 정보<br>
+                방문 전 전화연락 필수!<br>
+                2018-04-25일 기준</p>
+
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-6 mb-4">
+
+                <div class="view overlay z-depth-1-half">
+                  <img src="https://c.pxhere.com/photos/3f/1d/family_baby_mom_dad_newborn_baby_republic_of_korea_park_in_the_evening-617432.jpg!d" class="img-fluid">
+                  <a href="{% url 'park:park-list' %}">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+
+                <h4 class="my-4 font-weight-bold">공원</h4>
+                <p class="grey-text">서울에 있는 공원정보</p>
+
+              </div>
+              <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+          </section>
+          <!--Section: Category-->
+
+      </div>
+  </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footer unique-color-dark">
+
+    <!--Footer Links-->
+    <section id="contact">
+    <div class="container mt-5 mb-4 text-center text-md-left">
+        <div class="row mt-3">
+
+            <!--Fourth column-->
+            <div class="col-md-4 col-lg-3 col-xl-6">
+                <h6 class="text-uppercase font-weight-bold">
+                    <strong>Contact</strong>
+                </h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 72px;">
+                <p>
+                    <i class="fa fa-envelope mr-3"></i> zenuine1@gmail.com</p>
+                <p>
+                    <i class="fa fa-github mr-3"></i> https://github.com/KwonSoonWoo</p>
+                <p>
+                    <i class="fa fa-linkedin mr-3"></i> https://www.linkedin.com/in/aaron-kwon-ba2382174/</p>
+            </div>
+            <!--/.Fourth column-->
+
+        </div>
+    </div>
+    </section>
+    <!--/.Footer Links-->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+{% endblock %}

@@ -1,9 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <h3>서울시 문화행사(유아, 영아대상)목록</h3>
-    </div>
+<!--Section: Gallery-->
+          <section id="gallery">
+
+              <!-- Heading -->
+              <h2 class="mb-5 font-weight-bold text-center">Gallery heading</h2>
+
+              <!--Grid row-->
+              <div class="row d-flex justify-content-center">
+
+                  <!--Grid column-->
+                  <div class="col-md-6">
+                    {% for culture in cultures %}
+                      <!--Excerpt-->
+                      <a href="" class="teal-text">
+                          <h6 class="pb-1"><i class="fa fa-heart"></i><strong> {{ culture.gu }} </strong></h6>
+                      </a>
+                      <h4 class="mb-3"><strong>This is title of the news</strong></h4>
+                      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+                          placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
+                          debitis aut rerum.</p>
+
+                      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+                          placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
+                          debitis aut rerum.</p>
+                      <p>by <a><strong>Jessica Clark</strong></a>, 26/08/2016</p>
+                      <a class="btn btn-primary btn-md">Read more</a>
+
+                  </div>
+                  <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+          </section>
+          <!--Section: Gallery-->
     <div>
     {% for culture in cultures %}
         <div>

@@ -140,8 +140,8 @@ def culture_crawling():
 
     # data의 SearchConcertDetailService의 row 키를 순회
     for culture_event in culture_data['SearchConcertDetailService']['row']:
-        # 만약 USE_TRGT 키 값에 유아 혹은 영아라는 키워드가 들어가 있다면 객체 생성
-        if '유아' in culture_event['USE_TRGT'] or '영아' in culture_event['USE_TRGT']:
+        # 만약 USE_TRGT 키 값에 유아,영아,아기,아동이라는 키워드가 들어가 있다면 객체 생성
+        if '유아' in culture_event['USE_TRGT'] or '영아' in culture_event['USE_TRGT'] or '아기' in culture_event['USE_TRGT'] or '아동' in culture_event['USE_TRGT']:
             Culture.objects.update_or_create(
                 gu=culture_event['GCODE'],
                 place=culture_event['PLACE'],

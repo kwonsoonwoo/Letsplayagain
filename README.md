@@ -21,7 +21,25 @@
 
 ```json
 {
-  "SECRET_KEY": "<Django secret key>"
+  "SECRET_KEY": "<Django secret key>",
+  "CULTURE_API_CLIENT_KEY": "<Your Authentication key of data.seoul.go.kr>"
+}
+
+```
+
+#### '.secrets/dev.json'
+```json
+{
+  "DATABASES": {
+    "default": {
+      "ENGINE": "<Postgresql>",
+      "NAME": "<your psql database name>",
+      "USER": "<owner name of psql database>",
+      "PASSWORD": "<your password>",
+      "HOST": "<your host>",
+      "PORT": ""
+    }
+  }
 }
 ```
 
@@ -32,7 +50,7 @@
 - pipenv install
 - pipenv shell
 - cd app
-- export DJANGO_SETTINGS_MODULE=config.settings.local
+- export DJANGO_SETTINGS_MODULE=config.settings.dev
 ./manage.py runserver
 ```
 
