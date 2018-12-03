@@ -1,49 +1,83 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!--Section: Gallery-->
-          <section id="gallery">
 
-              <!-- Heading -->
-              <h2 class="mb-5 font-weight-bold text-center">Gallery heading</h2>
+<!--Main Navigation-->
+  <header>
 
-              <!--Grid row-->
-              <div class="row d-flex justify-content-center">
+    <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
 
-                  <!--Grid column-->
-                  <div class="col-md-6">
-                    {% for culture in cultures %}
-                      <!--Excerpt-->
-                      <a href="" class="teal-text">
-                          <h6 class="pb-1"><i class="fa fa-heart"></i><strong> {{ culture.gu }} </strong></h6>
-                      </a>
-                      <h4 class="mb-3"><strong>This is title of the news</strong></h4>
-                      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-                          placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
-                          debitis aut rerum.</p>
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="{% url 'index' %}">Let's Play Again</a>
 
-                      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-                          placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
-                          debitis aut rerum.</p>
-                      <p>by <a><strong>Jessica Clark</strong></a>, 26/08/2016</p>
-                      <a class="btn btn-primary btn-md">Read more</a>
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto smooth-scroll">
+          <li class="nav-item">
+            <a class="nav-link" href="#list">맨 위로</a>
+          </li>
+
+        </ul>
+
+      </div>
+      <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+
+    <!--Section: list-->
+      <section id="list" class="text-center">
+
+          {% for culture in cultures %}
+          <div class="d-flex justify-content-center">
+
+              <div class="col-lg-4 col-md-6 mb-4">
+
+                <!-- Card -->
+                <div class="card card-cascade wider">
+
+                  <!-- Card image -->
+                  <div class="view view-cascade gradient-card-header peach-gradient">
+
+                    <!-- Title -->
+                    <h3 class="card-header-title mb-3">{{ culture.place }}</h3>
+                    <!-- Text -->
+                    <p class="mb-0">{{ culture.gu }}</p>
 
                   </div>
-                  <!--Grid column-->
 
+                  <!-- Card content -->
+                  <div class="card-body card-body-cascade text-center">
+
+                    <!-- Text -->
+                    <p class="card-text">장소: {{ culture.place }}</p>
+                    <p class="card-text">시작일: {{ culture.start_date }}</p>
+                    <p class="card-text">종료일: {{ culture.end_date }}</p>
+                    <p class="card-text">시간: {{ culture.time }}</p>
+                    <p class="card-text">이용대상: {{ culture.target_user }}</p>
+                    <p class="card-text">이용요금: {{ culture.fee }}</p>
+                    <p class="card-text">문의: {{ culture.inquiry }}</p>
+                    <!-- Link -->
+                    <a href="{{ culture.homepage }}" class="orange-text d-flex flex-row-reverse p-2">
+                      <h5 class="waves-effect waves-light">홈페이지<i class="fa fa-angle-double-right ml-2"></i></h5>
+                    </a>
+
+                  </div>
+                  <!-- Card content -->
+                </div>
+                <!-- Card -->
               </div>
-              <!--Grid row-->
-
-          </section>
-          <!--Section: Gallery-->
-    <div>
-    {% for culture in cultures %}
-        <div>
-            지역구 : {{ culture.gu }}
-        </div>
-        <div>
-            장소: <a href="{% url 'culture:culture-detail' pk=culture.pk %}">{{ culture.place }}</a>
-        </div>
-    {% endfor %}
-    </div>
+          </div>
+          {% endfor %}
+      </section>
+  </header>
 {% endblock %}

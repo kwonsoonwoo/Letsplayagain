@@ -26,3 +26,9 @@ header,
     background-color: #24355C;
   }
 }
+
+#map img {
+  max-height: none;
+  height: auto;
+  border: 0
+}

@@ -11,6 +11,8 @@ class Culture(models.Model):
     target_user = models.TextField(blank=True, null=True)
     fee = models.TextField(blank=True, null=True)
     inquiry = models.TextField(blank=True, null=True)
+    program = models.TextField(blank=True, null=True)
+    contents = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.place
