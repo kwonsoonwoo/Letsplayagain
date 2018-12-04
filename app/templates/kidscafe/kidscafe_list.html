@@ -1,16 +1,81 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h3>Kids cafe 목록</h3>
-</div>
 
-<div>
-    2018-04-25일 기준으로 운영중인 키즈카페
-</div>
-{% for kidscafe in kidscafes %}
-    <div>
-        <a href="{% url 'kidscafe:kidscafe-detail' pk=kidscafe.pk %}">{{ kidscafe.name }}</a>
-    </div>
-{% endfor %}
+<!--Main Navigation-->
+  <header>
+
+    <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="{% url 'index' %}">Let's Play Again</a>
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto smooth-scroll">
+          <li class="nav-item">
+            <a class="nav-link" href="#list">맨 위로</a>
+          </li>
+
+        </ul>
+
+      </div>
+      <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+
+    <!--Section: list-->
+      <section id="list" class="text-center">
+
+          {% for kidscafe in kidscafes %}
+          <div class="d-flex justify-content-center">
+
+              <div class="col-lg-4 col-md-6 mb-4">
+
+                <!-- Card -->
+                <div class="card card-cascade wider">
+
+                  <!-- Card image -->
+                  <div class="view view-cascade gradient-card-header aqua-gradient">
+
+                    <!-- Title -->
+                    <h3 class="text-white card-header-title mb-3">{{ kidscafe.name }}</h3>
+
+                  </div>
+
+                  <!-- Card content -->
+                  <div class="card-body card-body-cascade text-center">
+
+                    <!-- Text -->
+                    <p class="card-text">카페이름: {{ kidscafe.name }}</p>
+                    <p class="card-text">지번주소: {{ kidscafe.address }}</p>
+                    <p class="card-text">도로명 주소: {{ kidscafe.address_road }}</p>
+                    <p class="card-text">전화번호: {{ kidscafe.tell }}</p>
+                    <!-- Link -->
+                    <div>
+                      <a href="http://map.daum.net/link/to/{{ kidscafe.name }},{{ kidscafe.latitude }},{{ kidscafe.longitude }}">
+                        <button class="btn aqua-gradient">지도보기</button>
+                      </a>
+                    </div>
+                    <!-- / Link -->
+
+                  </div>
+                  <!-- Card content -->
+                </div>
+                <!-- Card -->
+              </div>
+          </div>
+          {% endfor %}
+      </section>
+  </header>
 {% endblock %}
