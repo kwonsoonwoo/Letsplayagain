@@ -1,21 +1,123 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h3>서울 공원 리스트</h3>
-</div>
-<div>
-    {% for park in parks %}
-        <div>
-            {% if park.region %}
-                지역구: {{ park.region }}
-            {% else %}
-                지역구: 없음
-            {% endif %}
-        </div>
-        <div>
-            공원명: <a href="{% url 'park:park-detail' pk=park.pk %}">{{ park.name }}</a>
-        </div>
-    {% endfor %}
-</div>
+
+<!--Main Navigation-->
+  <header>
+
+    <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="{% url 'index' %}">Let's Play Again</a>
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto smooth-scroll">
+          <li class="nav-item">
+            <a class="nav-link" href="#list">맨 위로</a>
+          </li>
+
+        </ul>
+
+      </div>
+      <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+
+    <!--Section: list-->
+      <section id="list" class="text-center">
+
+          {% for park in parks %}
+          <div class="d-flex justify-content-center">
+
+              <div class="col-lg-4 col-md-6 mb-4">
+
+                <!-- Card -->
+                <div class="card card-cascade wider">
+
+                  <!-- Card image -->
+                  <div class="view view-cascade gradient-card-header purple-gradient">
+
+                    <!-- Title -->
+                    <h3 class="text-white card-header-title mb-3">{{ park.name }}</h3>
+                    <!-- Text -->
+                    <p class="text-white mb-0">{{ park.gu }}</p>
+
+                  </div>
+
+                  <!-- Card content -->
+                  <div class="card-body card-body-cascade text-center">
+
+                    <!-- Text -->
+                    <p class="card-text">공원명: {{ park.name }}</p>
+                    <p class="card-text">지번주소: {{ park.address }}</p>
+                    <p class="card-text">전화번호: {{ park.tell }}</p>
+                    <!-- 공원개요 buttons -->
+                    <button class="btn purple-gradient" type="button" data-toggle="collapse" data-target="#overview{{ forloop.counter }}"
+                        aria-expanded="false" aria-controls="overview">
+                        공원개요
+                    </button>
+                    <!-- / 공원개요 buttons -->
+                    <!-- 참고사항 buttons -->
+                    <div>
+                        <button class="btn purple-gradient" type="button" data-toggle="collapse" data-target="#usenote{{ forloop.counter }}"
+                            aria-expanded="false" aria-controls="usenote">
+                            참고사항
+                        </button>
+                    </div>
+                    <!-- / 참고사항 buttons -->
+
+                    <!-- 공원개요 element -->
+                    <div class="collapse" id="overview{{ forloop.counter }}">
+                      <div class="mt-3">
+                        {{ park.overview|linebreaks }}
+                      </div>
+                    </div>
+                    <!-- / 공원개요 element -->
+
+                      <!-- 참고사항 element -->
+                    <div class="collapse" id="usenote{{ forloop.counter }}">
+                      <div class="mt-3">
+                        {{ park.use_note|linebreaks }}
+                      </div>
+                    </div>
+                    <!-- / 참고사항 element -->
+
+
+                    <!-- Link -->
+                    <div>
+                      <a href="http://map.daum.net/link/to/{{ park.name }},{{ park.latitude }},{{ park.longitude }}">
+                        <button class="btn purple-gradient">지도보기</button>
+                      </a>
+                    </div>
+                    <!-- / Link -->
+
+                    <!-- Link -->
+                      {% if park.website %}
+                    <a href="{{ park.website }}" class="purple-text d-flex flex-row-reverse p-2">
+                      <h5 class="waves-effect waves-light">홈페이지<i class="fa fa-angle-double-right ml-2"></i></h5>
+                    </a>
+                      {% else %}
+                      <h5 class="purple-text d-flex flex-row-reverse p-2">홈페이지 없음</h5>
+                      {% endif %}
+
+                  </div>
+                  <!-- Card content -->
+                </div>
+                <!-- Card -->
+              </div>
+          </div>
+          {% endfor %}
+      </section>
+  </header>
 {% endblock %}
