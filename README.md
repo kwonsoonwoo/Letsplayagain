@@ -54,4 +54,10 @@
 ./manage.py runserver
 ```
 
+## ETC
+
+- If you failed install pyproj
+    - You'll probably have to install PROJ.4
+    - [PROJ.4 Document](https://docs.djangoproject.com/ko/2.1/ref/contrib/gis/install/geolibs/#id9)
+
 

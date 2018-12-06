@@ -27,7 +27,8 @@ urlpatterns = [
     path('kidscafe/', include('kidscafe.urls')),
     path('culture/', include('culture.urls')),
     path('park/', include('park.urls')),
-] + static(
+]
+urlpatterns += static(
     prefix=settings.MEDIA_URL,
     document_root=settings.MEDIA_ROOT
 )
